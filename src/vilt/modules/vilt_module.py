@@ -1327,6 +1327,8 @@ class ViLTransformerSS(pl.LightningModule):
         all_hidden_states = []
 
         all_relative_position_bias = self.get_rel_pos_bias(self.relative_position_index)
+        
+        relative_position_bias_list = torch.chunk(all_relative_position_bias, self.num_layers, dim=0)
 
         for i, blk in enumerate(self.transformer.blocks):
             x, _attn = blk(x, mask=co_masks, type_id=0, relative_position_bias=relative_position_bias_list[i])
@@ -1416,6 +1418,8 @@ class ViLTransformerSS(pl.LightningModule):
         all_hidden_states = []
 
         all_relative_position_bias = self.get_rel_pos_bias(self.relative_position_index)
+        
+        relative_position_bias_list = torch.chunk(all_relative_position_bias, self.num_layers, dim=0)
 
         for i, blk in enumerate(self.transformer.blocks):
             x, _attn = blk(x, mask=co_masks, type_id=0, relative_position_bias=relative_position_bias_list[i])
