@@ -127,6 +127,11 @@ def _cfg(url="", **kwargs):
 
 default_cfgs = {
     # patch models (my experiments)
+    "vit_tiny_patch16_224": _cfg(
+        url='https://storage.googleapis.com/vit_models/augreg/Ti_16-i21k-300ep-lr_0.001-aug_none-wd_0.03-do_0.0-sd_0.0--imagenet2012-steps_20k-lr_0.03-res_224.npz',
+        hf_hub_id='timm/',
+        custom_load=True
+    ),
     "vit_small_patch16_224": _cfg(
         url="https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-weights/vit_small_p16_224-15ec54c9.pth",
     ),
@@ -1249,6 +1254,24 @@ def vit_small_patch16_224(pretrained=False, **kwargs):
     model = _create_vision_transformer(
         "vit_small_patch16_224", pretrained=pretrained, **model_kwargs
     )
+    return model
+
+
+@register_model
+def vit_tiny_patch16_224(pretrained=False, **kwargs) -> VisionTransformer:
+    """ ViT-Tiny (Vit-Ti/16)
+    """
+    model_args = dict(patch_size=16, embed_dim=192, depth=12, num_heads=3)
+    model = _create_vision_transformer('vit_tiny_patch16_224', pretrained=pretrained, **dict(model_args, **kwargs))
+    return model
+
+
+@register_model
+def vit_tiny_patch16_384(pretrained=False, **kwargs) -> VisionTransformer:
+    """ ViT-Tiny (Vit-Ti/16) @ 384x384.
+    """
+    model_args = dict(patch_size=16, embed_dim=192, depth=12, num_heads=3)
+    model = _create_vision_transformer('vit_tiny_patch16_384', pretrained=pretrained, **dict(model_args, **kwargs))
     return model
 
 

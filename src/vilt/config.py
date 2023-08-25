@@ -532,6 +532,82 @@ def task_mlm_itm_ifm_square_randaug_base_vl():
     max_text_len = 40
 
 
+@ex.named_config
+def task_test_vit_tiny_mlm_itm_ifm_square_randaug_base_vl():
+    exp_name = "vit_tiny_mlm_itm_ifm_square_randaug_base_vl"
+    train_transform_keys = ["square_transform_randaug"]
+    tasks = [
+        "vl",
+    ]
+
+    datasets = [
+        ["f30k"],
+    ]
+    data_roots = [
+        ["/workspace/dataset/dataset/flickr30k/"],
+    ]
+
+    discrete_vae_weight_path = ""
+
+    # check on the weight of different tasks
+    loss_names = _loss_names({"itm": 1, "mlm": 1, "ifm": 1})
+    batch_size = 512
+    max_epoch = 10
+    max_steps = None
+    warmup_steps = 0.1
+    draw_false_image = 0
+    learning_rate = 2e-4
+    val_transform_keys = ["square_transform"]
+    val_check_interval = 1.0
+    image_size = 224
+    patch_size = 16
+    hidden_size = 192
+    num_heads = 3
+    vlffn_start_layer_index = 10
+    use_sharded_training=False
+    vit = "vit_tiny_patch16_224"
+    max_vl_text_len = 40
+    max_text_len = 40
+
+
+@ex.named_config
+def task_vit_tiny_pretraining():
+    exp_name = "vit_tiny_pretraining"
+    train_transform_keys = ["square_transform_randaug"]
+    tasks = [
+        "vl",
+    ]
+
+    datasets = [
+        ["sbu", "gcc", "coco", "vg"],
+    ]
+    data_roots = [
+        ["/storage/linjli/data/vilt/pretrain_arrows_code224/", "/storage/linjli/data/vilt/pretrain_arrows_code224/", "/storage/linjli/data/vilt/pretrain_arrows_code224/", "/storage/linjli/data/vilt/pretrain_arrows_code224/"],
+    ]
+
+    discrete_vae_weight_path = ""
+
+    # check on the weight of different tasks
+    loss_names = _loss_names({"itm": 1, "mlm": 1, "ifm": 1})
+    batch_size = 512
+    max_epoch = 10
+    max_steps = None
+    warmup_steps = 0.1
+    draw_false_image = 0
+    learning_rate = 2e-4
+    val_transform_keys = ["square_transform"]
+    val_check_interval = 1.0
+    image_size = 224
+    patch_size = 16
+    vlffn_start_layer_index = 10
+    use_sharded_training=False
+    vit = "vit_tiny_patch16_224"
+    hidden_size = 192
+    num_heads = 3
+    max_vl_text_len = 40
+    max_text_len = 40
+
+
 # Named configs for "etc" which are orthogonal to "env" and "task", need to be added at the end
 @ex.named_config
 def step10k():
