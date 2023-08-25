@@ -438,7 +438,7 @@ def task_finetune_irtr_f30k_square_randaug_base_image384():
     val_transform_keys = ["square_transform"]
     loss_names = _loss_names({"irtr": 1.0})
     batch_size = 1024
-    max_epoch = 10
+    max_epoch = 40
     max_steps = None
     warmup_steps = 0.1
     get_recall_metric = True
