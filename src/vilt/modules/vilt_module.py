@@ -561,6 +561,8 @@ class ViLTransformerSS(pl.LightningModule):
                     modalities = ["v", "l"]
                 elif self.hparams.config["loss_names"]["vqa"] > 0:
                     modalities = ["vl"]
+                elif self.hparams.config["loss_names"]["nlvr2"] > 0:
+                    modalities = ["vl"]
             else:
                 modalities = ["v", "l", "vl"]
 
@@ -669,6 +671,8 @@ class ViLTransformerSS(pl.LightningModule):
                 if self.hparams.config["loss_names"]["irtr"] > 0:
                     modalities = ["v", "l"]
                 elif self.hparams.config["loss_names"]["vqa"] > 0:
+                    modalities = ["vl"]
+                elif self.hparams.config["loss_names"]["nlvr2"] > 0:
                     modalities = ["vl"]
             else:
                 modalities = ["v", "l", "vl"]
