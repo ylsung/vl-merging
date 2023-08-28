@@ -8,12 +8,12 @@ class CocoCaptionKarpathyDataset(BaseDataset):
 
         if split == "train":
             # names = ["code224_coco_caption_karpathy_train", "code224_coco_caption_karpathy_restval"]
-            names = ["code224_coco_caption_karpathy_train"]
+            names = ["coco_caption_karpathy_train"]
         elif split == "val":
-            names = ["code224_coco_caption_karpathy_val"]
+            names = ["coco_caption_karpathy_val"]
             # names = ["coco_caption_karpathy_test"]
         elif split == "test":
-            names = ["code224_coco_caption_karpathy_test"]
+            names = ["coco_caption_karpathy_test"]
 
         super().__init__(*args, **kwargs, names=names, text_column_name="caption")
 
