@@ -7,7 +7,7 @@
 
 ## Updates
 
-* [Oct 2023] Released the checkpoints.
+* [Oct 2023] Released the checkpoints, and released scripts for NLVR2 and Flickr30k.
 
 
 ## Environment
