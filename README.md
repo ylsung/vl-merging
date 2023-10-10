@@ -5,6 +5,11 @@
 
 ![1682897994306](image/README/1682897994306.png)
 
+## Updates
+
+* [Oct 2023] Released the checkpoints.
+
+
 ## Environment
 
 ```bash
@@ -35,6 +40,15 @@ In codes, some parameter names are not directly the same to the paper, and they 
 
 * ufo = modality-agnostic model (inspired from [here](https://www.bing.com/search?q=UFO+vision+and+language+paper&qs=n&form=QBRE&sp=-1&lq=0&pq=ufo+vision+and+language+paper&sc=10-29&sk=&cvid=0F3FE1344EAF48869FA99DF488FEEE90&ghsh=0&ghacc=0&ghpl=))
 * all moe = modality-specific model (inspired from [here](https://arxiv.org/abs/2111.02358))
+
+## Checkpoints
+
+| Methods || Checkpoints |
+|:--------------------------------:|:--------:|:--------:|
+| Modality-Specific Model  || [VL pre-trained](https://drive.google.com/file/d/1NtzdrIPHc1mi7y1JJjzK_XfY3z6FW-DI/view?usp=drive_link) / [VQA fine-tuned](https://drive.google.com/file/d/1F1ZsyDIAmMT8Dp6keTAimmw8wHEvPK4s/view?usp=drive_link) / [COCO fine-tuned](https://drive.google.com/file/d/1sjzG25zG2A6_C11chvWUW9nybu0dTyrC/view?usp=drive_link)    |
+| Modality-Agnostic Model  || [VL pre-trained](https://drive.google.com/file/d/1ErBeaJ2uD5xEGNNN9BmqBENhDMJdYPV-/view?usp=drive_link) / [VQA fine-tuned](https://drive.google.com/file/d/109ORA6-F9na2c0ScbKHymw7NS4kqvrUd/view?usp=drive_link) / [COCO fine-tuned](https://drive.google.com/file/d/1XMgOaSmsSu_lQPJGqzeQmrOCG3NCYoRI/view?usp=drive_link) |
+| Our merged model   || [VL pre-trained](https://drive.google.com/file/d/1G4n69-PA8Ly6OhzcXN8e7qb12DMoBIDX/view?usp=drive_link) / [VQA fine-tuned](https://drive.google.com/file/d/1PeghdSeyrLohv0vmyFzX8Uo6AOSR-5mE/view?usp=drive_link) / [COCO fine-tuned](https://drive.google.com/file/d/1UR4x3foct4v0u8-S8ZAk1cCGXHbFsJ2V/view?usp=drive_link) |
+
 
 ## Evaluation Pipeline
 
@@ -209,6 +223,12 @@ python run.py with data_root=${data_dir} num_gpus=8 num_nodes=1 task_finetune_vq
     per_gpu_batchsize=32 batch_size=256 image_size=480 load_path=${load_path} 
     log_dir=${log_dir} ufo test_only=True
 ```
+
+## Fine-tuning on NLVR2 and Flickr30k
+
+* For NLVR2, please change the task in previous scripts to `task_finetune_nlvr2_square_randaug_base_image384`, and updatet the batch size to `per_gpu_batchsize=8 batch_size=128`, and the gpu usage to `num_gpus=8 num_nodes=2`.
+
+* For Flickr30k, please change the task in previous scripts to `task_finetune_irtr_f30k_square_randaug_base_image384`, and updatet the batch size and learning rates to `per_gpu_batchsize=8 batch_size=128 learning_rate=6.25e-7`, and the gpu usage to `num_gpus=8 num_nodes=2`.
 
 ## Reference
 
