@@ -235,12 +235,10 @@ python run.py with data_root=${data_dir} num_gpus=8 num_nodes=1 task_finetune_vq
 Please consider to cite our work if you use the code for your projects.
 
 ```bibtex
-@inproceedings{Sung2023AnEmpiricalSO,
-      title={An Empirical Study of Multimodal Model Merging}, 
-      author={Yi-Lin Sung and Linjie Li and Kevin Lin and Zhe Gan and Mohit Bansal and Lijuan Wang},
-      year={2023},
-      eprint={2304.14933},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
+@article{Sung2023AnEmpiricalSO,
+  title={An Empirical Study of Multimodal Model Merging},
+  author={Yi-Lin Sung and Linjie Li and Kevin Lin and Zhe Gan and Mohit Bansal and Lijuan Wang},
+  journal={Empirical Methods in Natural Language Processing (Findings)},
+  year={2023},
 }
 ```
